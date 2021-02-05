@@ -1,0 +1,6 @@
+ajouter video dans detail
+
+ajouter loader sur resultrats search
+
+plutot que d'appeler le search sur chaque lettre saisie, on met un timer qui se declenche à l'arret de la saisie et dont on definit la durée
+et lancer le search une fois le timer écoulé : debounce 300ms rxjs ou angular

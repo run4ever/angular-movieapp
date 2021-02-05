@@ -1,0 +1,53 @@
+.list-body {
+    background: #cdcdcd;
+}
+
+div.row {
+    padding-bottom: 50px;
+}
+
+.card {
+    margin: 10px;
+    transition-duration: .2s;
+}
+
+.card:hover {
+    cursor: pointer;
+    //margin: 10px;
+    transform: scale(1.1);
+}
+
+.card:hover img {
+    filter: blur(2px);
+}
+
+.card-body {
+    background: #000;
+    color:white;
+
+}
+
+.card-body h2 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 1.2rem;
+
+}
+
+.myloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index:1000; //utile pour certains navigateurs
+    color:white;
+
+}
+
+ul li:hover{
+    cursor: pointer;
+    background: #cdcdcd;
+    font-weight: bold;
+}

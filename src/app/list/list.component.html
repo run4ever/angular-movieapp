@@ -1,0 +1,43 @@
+<div class="list-body">
+    <h1>Films à l'affiche - {{inputElt.value}}</h1>
+    
+    <!-- #inputElt (syntaxe angular template reference) sert à récupérer la valeur du champ -->
+    <!-- NB, pour tester on peut écrire (keyup)="0" pour dire qu'on ne définit pas de fonction, mais le keyup est nécessaire pour récupérer inputElt -->
+    <input #inputElt (keyup)="searchMovie(inputElt.value)" placeholder="Rechercher..." type="text" class="form-control sticky-top">
+
+    <ul class="list-group">
+        <!-- on fait ca plutot que routeur pour pouvoir faire autre chose en plus que la nav -->
+        <li (click)="goToDetailPage(result.id)" *ngFor="let result of resultslist" class="list-group-item">
+            {{result.title}}
+        </li>
+        <!-- <li *ngFor="let result of resultslist" [routerLink]="['/detail', result.id, 'search']" class="list-group-item">
+            {{result.title}}
+        </li> -->
+    </ul>
+
+    <div [style.opacity]="getListOpacity()" class="row">
+        <div class="col-12 col-md-3 col-xl-2" *ngFor="let movie of movieslist">
+            <!-- utiliser les {{}} que pour afficher du texte à l'écran -->
+            <!-- <div routerLink="detail/{{movie.id}}" class="card"> -->
+            <div [routerLink]="['/detail', movie.id, 'movies']" class="card">
+                <img [src]="printImageSrc(movie)" alt="">
+                <div class="card-body">
+                    <h2>{{movie.title}}</h2>
+                    <app-ratings [score]="movie.score/2"></app-ratings>
+                    <!-- <app-ratings score="2"></app-ratings> -->
+                </div>
+            </div>
+        </div>        
+    </div>
+
+        <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center myloader">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+
+
+        <div class="fixed-bottom bg-info text-center p-2">
+            <button (click)="loadNextMovies()" class="btn btn-light">Voir 20 films de +</button>
+        </div>
+</div>
